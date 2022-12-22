@@ -1,5 +1,5 @@
 # job4j_di
-
+[![Build Status](https://app.travis-ci.com/ftptpf/job4j_di.svg?branch=master)](https://app.travis-ci.com/ftptpf/job4j_di)
 
 ## Проект "Dependency Injection"
 

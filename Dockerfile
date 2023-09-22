@@ -1,6 +1,12 @@
-FROM maven:3.6.3-openjdk-17
-RUN mkdir job4j_di
-WORKDIR job4j_di
-COPY . .
+# Этап 1 - Сборка проекта в jar
+FROM maven:3.6.3-openjdk-17 AS maven
+WORKDIR /app
+COPY . /app
 RUN mvn install
-CMD ["java", "-jar", "target/main.jar"]
+
+
+# Этап 2 - Копирование jar в другой image
+FROM openjdk:17.0.2-jdk
+WORKDIR /app
+COPY --from=maven /app/target/main.jar app.jar
+CMD ["java", "-jar", "app.jar"]
